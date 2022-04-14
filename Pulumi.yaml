@@ -1,0 +1,3 @@
+name: template-iac-web-app
+runtime: dotnet
+description: Template IAC Web APP

@@ -1,0 +1,36 @@
+config:
+  template-iac-web-app:azure-native:
+    location: EastUS2
+  template-iac-web-app:resource:
+    name: template-iac-webapp-dev-rg 
+  template-iac-web-app:serviceplans:
+    - serviceplan: 
+        name: appplan-template-iac-dev-001
+        capacity: 1
+        size: S1
+        tier: Standard
+        kind: windows
+        webapps:
+        - name: appweb-template-iac-dev-001
+        - name: appweb-template-iac-dev-002
+    - serviceplan:
+        name: appplan-template-iac-dev-002
+        capacity: 1
+        size: S1
+        tier: Standard
+        kind: windows
+        webapps:
+        - name: appweb-template-iac-dev-003           
+  template-iac-web-app:snetConfigs:
+    - snetConfig:
+        prefixesSubnet: 10.0.0.0/27
+        rgName: template-dev-rg
+        vnetName: vnet-template-dev-001
+  template-iac-web-app:tagSettings:
+    createdby: TemplateIAC@template
+    keeper: TemplateIAC@template
+    managedby: pulumi
+    product: TemplateIAC
+    access: public
+    repo: template-iac-web-app  
+  pulumi:template: azure-csharp
